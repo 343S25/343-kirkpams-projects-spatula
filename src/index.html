@@ -17,7 +17,7 @@
                 <!-- Opens a modal for user to input location -->
                 <div class="col" type="button" data-bs-toggle="modal" data-bs-target="#locationModal">Set Location</div>
                 <!-- Div target for weather info -->
-                <div id="weather"></div>
+                <div class="col" id="weather"></div>
             </div>
         </div>
     </header>
@@ -32,12 +32,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal">&nbsp;</button>
                 </div>
                 <!-- Model Body -->
-                <div class="modal-body">
+                <div class="modal-body container">
                     <!-- Todo: Add form for user input-->
+                     <div class="row">
+                         <input class="p-2 my-2" type="text" name="city" id="city" placeholder="Enter City">
+                         <input class="p-2 my-2" type="text" name="locality" id="locality" placeholder="Enter your State or Country">
+                     </div>
                 </div>
                 <!-- Model Footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                    <button id="submit" type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
