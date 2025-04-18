@@ -2,17 +2,12 @@ const month_names = ["January", "February", "March", "April", "May", "June", "Ju
 const day_names = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const month_lengths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-const today = new Date();
-const calendarTitle = document.getElementById("calendar-title");
+let current_date = new Date();
+const weeks = document.getElementById("calendar-boxes").getElementsByClassName("row");
 
 function buildCalendar(date) {
     let base_month = date.getMonth();
     let base_day = date.getDay();
-
-    // set month field to the correct month
-    calendarTitle.textContent = month_names[base_month] + " " + date.getFullYear();
-
-    let weeks = document.getElementById("calendar-boxes").getElementsByClassName("row");
 
     let curr_date = 1;
     let curr_week = 1;
@@ -35,7 +30,7 @@ function buildCalendar(date) {
             days[curr_day].textContent = curr_date;
             days[curr_day].classList = "col calendar-day curr-month";
 
-            if (curr_date == today.getDate() && baseDate.getMonth() == today.getMonth() && baseDate.getFullYear() == today.getFullYear()) {
+            if (curr_date == current_date.getDate() && baseDate.getMonth() == current_date.getMonth() && baseDate.getFullYear() == current_date.getFullYear()) {
                 days[curr_day].classList.add("curr-day");
             }
             curr_date++;
@@ -66,19 +61,34 @@ function buildCalendar(date) {
     }
 }
 
-let baseDate = new Date(today.getFullYear(), today.getMonth(), 1);
+let baseDate = new Date(current_date.getFullYear(), current_date.getMonth(), 1);
 
 const leftButton = document.getElementById("calendar-button-left");
 const rightButton = document.getElementById("calendar-button-right");
+const jumpButton = document.getElementById("date-submit");
+const dateSelect = document.getElementById("date-input");
 
 leftButton.addEventListener("click", function () {
     baseDate.setMonth(baseDate.getMonth() - 1);
+    dateSelect.value = baseDate.toISOString().substring(0, 7);
     buildCalendar(baseDate);
 });
 
 rightButton.addEventListener("click", function () {
     baseDate.setMonth(baseDate.getMonth() + 1);
+    dateSelect.value = baseDate.toISOString().substring(0, 7);
     buildCalendar(baseDate);
 });
+
+jumpButton.addEventListener("click", function (event) {
+    let target = dateSelect.value.split("-");
+    baseDate.setYear(parseInt(target[0]));
+    baseDate.setMonth(parseInt(target[1]) - 1);
+
+    buildCalendar(baseDate);
+    event.preventDefault();
+});
+
+dateSelect.value = baseDate.toISOString().substring(0, 7);
 
 buildCalendar(baseDate);
