@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Spatula Habit Calendar</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,14 +130,14 @@
                 <!-- Model Header -->
                 <div class="modal-header">
                     <h5 class="modal-title">Please input your city, then your state/country</h5>
-                    <!-- The "&nbsp;" is because the browser wants accessible text in the element-->
-                    <button type="button" class="btn-close" data-bs-dismiss="modal">&nbsp;</button>
                 </div>
                 <!-- Model Body -->
                 <div class="modal-body container">
                      <div class="row">
-                         <input class="p-2 my-2" type="text" name="city" id="city" placeholder="Enter City">
-                         <input class="p-2 my-2" type="text" name="locality" id="locality" placeholder="Enter your State or Country">
+                        <label for="city">City:</label>
+                        <input class="p-2 my-2" type="text" name="city" id="city" placeholder="Enter City">
+                        <label for="locality">Locality:</label>
+                        <input class="p-2 my-2" type="text" name="locality" id="locality" placeholder="Enter your State or Country">
                      </div>
                 </div>
                 <!-- Model Footer -->
