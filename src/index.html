@@ -41,7 +41,15 @@
             <div class="col col-8 calendar-container container">
                 <div class="row text-center calendar-header">
                     <button class="col calendar-button" type="button" id="calendar-button-left">←</button>
-                    <p class="col col-8 calendar-title" id="calendar-title">[MONTH]</p>
+                    <div class="col col-8">
+                        <div class="row">
+                            <!-- <p class="col calendar-title" id="calendar-title">[MONTH]</p> -->
+                        </div>
+                        <form class="row">
+                            <input type="month" class="calendar-title col col-10" value="1900-01" id="date-input">
+                            <button type="submit" class="calendar-button col col-2" id="date-submit">Jump!</button>
+                        </form>
+                    </div>
                     <button class="col calendar-button" type="button" id="calendar-button-right">→</button>
                 </div>
                 <div class="calendar container" id="calendar-boxes">
@@ -54,59 +62,59 @@
                         <p class="col day-head">Fri</p>
                         <p class="col day-head">Sat</p>
                     </div>
-                    <div class="row" id="wk-1">
-                        <div class="col calendar-day">day1</div>
-                        <div class="col calendar-day">day2</div>
-                        <div class="col calendar-day">day3</div>
-                        <div class="col calendar-day">day4</div>
-                        <div class="col calendar-day">day5</div>
-                        <div class="col calendar-day">day6</div>
-                        <div class="col calendar-day">day7</div>
+                    <div class="row">
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
                     </div>
-                    <div class="row" id="wk-2">
-                        <div class="col calendar-day">day1</div>
-                        <div class="col calendar-day">day2</div>
-                        <div class="col calendar-day">day3</div>
-                        <div class="col calendar-day">day4</div>
-                        <div class="col calendar-day">day5</div>
-                        <div class="col calendar-day">day6</div>
-                        <div class="col calendar-day">day7</div>
+                    <div class="row">
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
                     </div>
-                    <div class="row" id="wk-3">
-                        <div class="col calendar-day">day1</div>
-                        <div class="col calendar-day">day2</div>
-                        <div class="col calendar-day">day3</div>
-                        <div class="col calendar-day">day4</div>
-                        <div class="col calendar-day">day5</div>
-                        <div class="col calendar-day">day6</div>
-                        <div class="col calendar-day">day7</div>
+                    <div class="row">
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
                     </div>
-                    <div class="row" id="wk-4">
-                        <div class="col calendar-day">day1</div>
-                        <div class="col calendar-day">day2</div>
-                        <div class="col calendar-day">day3</div>
-                        <div class="col calendar-day">day4</div>
-                        <div class="col calendar-day">day5</div>
-                        <div class="col calendar-day">day6</div>
-                        <div class="col calendar-day">day7</div>
+                    <div class="row">
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
                     </div>
-                    <div class="row" id="wk-5">
-                        <div class="col calendar-day">day1</div>
-                        <div class="col calendar-day">day2</div>
-                        <div class="col calendar-day">day3</div>
-                        <div class="col calendar-day">day4</div>
-                        <div class="col calendar-day">day5</div>
-                        <div class="col calendar-day">day6</div>
-                        <div class="col calendar-day">day7</div>
+                    <div class="row">
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
                     </div>
-                    <div class="row" id="wk-6">
-                        <div class="col calendar-day">day1</div>
-                        <div class="col calendar-day">day2</div>
-                        <div class="col calendar-day">day3</div>
-                        <div class="col calendar-day">day4</div>
-                        <div class="col calendar-day">day5</div>
-                        <div class="col calendar-day">day6</div>
-                        <div class="col calendar-day">day7</div>
+                    <div class="row">
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
+                        <div class="col calendar-day"></div>
                     </div>
                 </div>
             </div>
@@ -114,13 +122,6 @@
                 <p class="row tasks-title">Today's Tasks</p>
                 <div class="row tasks-container"></div>
             </div>
-            <!-- <div class="col tasks-container">
-                <p class="row tasks-title">Today's Tasks</p>
-            </div> -->
-            <!-- <div class="col">
-                <p class="row tasks-title">Today's Tasks</p>
-                <div class="row tasks-container"></div>
-            </div> -->
         </div>
     </div>
     <!-- Modal for location collection -->

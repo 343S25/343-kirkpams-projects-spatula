@@ -12,11 +12,20 @@
 
 .calendar-button {
     background-color: #f9fdff;
-    border: 1px solid #708e9f;
-    border-radius: 5px;
-    padding: 0.5vh 1vw;
+    border: 2px solid #708e9f;
+    border-radius: 10px;
     margin: 0 0.5vw;
     font-size: 30pt;
+}
+
+.calendar-button:hover {
+    background-color: #e3e9ed;
+    border-color: #708e9f;
+}
+
+.calendar-button:active {
+    background-color: #abbec9;
+    border-color: #456b82;
 }
 
 .calendar-title {
@@ -50,7 +59,7 @@
 }
 
 .curr-day {
-    border: 1px solid #456ba2;
+    border: 1px solid #456b82;
     background-color: #abbec9;
 }
 
@@ -58,7 +67,7 @@
     border-radius: 10px;
     border: 2px solid #062639;
     margin: 0 1.5vw;
-    height: 60vh;
+    height: 51.15vh;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-top: none;
@@ -69,7 +78,7 @@
 }
 
 .tasks-title {
-    border: 2px solid #456ba2;
+    border: 2px solid #456b82;
     background-color: #e3e9ed;
     margin: -1vh -1vw;
     padding: 1vh 1vw;
@@ -77,4 +86,17 @@
     font-size: 30pt;
     color: #062639;
     border-radius: 10px;
+}
+
+#date-submit {
+    font-size: 10pt;
+    border-radius: 5px;
+    margin: 1.5vh 0;
+}
+
+#date-input {
+    border-radius: 5px;
+    color: #062639;
+    border: none;
+    text-align: center;
 }
