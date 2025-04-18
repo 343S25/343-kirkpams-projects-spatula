@@ -10,16 +10,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
+    <!-- BootStrap CSS Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <!-- Local CSS -->
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/calendar.css">
-    <!-- BootStrap CSS Link -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 </head>
 <body>
     <header>
-        <div class="container text-center ms-0 header">
+        <div class="container text-center header">
             <div class="swoosh head"></div>
             <div class="row my-3">
                 <div class="col" type="button" id="viewToggle">Toggle View</div>
@@ -36,9 +36,41 @@
             </div>
         </div>
     </header>
-    <div class="container text-center">
+    <div class="container text-center body-container">
         <div class="row">
-            <div class="col col-8 calendar-container container">
+            <div class="col calendar-container container" id="mobile-layout">
+                <div class="calendar container" id="weekly-calendar-boxes">
+                    <div class="row">
+                        <p class="col day-head col-1">Sun</p>
+                        <div class="col calendar-day"></div>
+                    </div>
+                    <div class="row">
+                        <p class="col day-head col-1">Mon</p>
+                        <div class="col calendar-day"></div>
+                    </div>
+                    <div class="row">
+                        <p class="col day-head col-1">Tue</p>
+                        <div class="col calendar-day"></div>
+                    </div>
+                    <div class="row">
+                        <p class="col day-head col-1">Wed</p>
+                        <div class="col calendar-day"></div>
+                    </div>
+                    <div class="row">
+                        <p class="col day-head col-1">Thu</p>
+                        <div class="col calendar-day"></div>
+                    </div>
+                    <div class="row">
+                        <p class="col day-head col-1">Fri</p>
+                        <div class="col calendar-day"></div>
+                    </div>
+                    <div class="row">
+                        <p class="col day-head col-1">Sat</p>
+                        <div class="col calendar-day"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-8 calendar-container container" id="desktop-layout">
                 <div class="row text-center calendar-header">
                     <button class="col calendar-button" type="button" id="calendar-button-left">←</button>
                     <div class="col col-8">
@@ -117,8 +149,10 @@
                 </div>
             </div>
             <div class="col tasks-outer">
-                <p class="row tasks-title">Today's Tasks</p>
-                <div class="row tasks-container"></div>
+                <p class="tasks-title">Today's Tasks</p>
+                <div class="row tasks-container">
+                    <!-- TASKS ARE INSERTED HERE -->
+                </div>
             </div>
         </div>
     </div>

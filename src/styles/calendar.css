@@ -1,13 +1,17 @@
-.calendar-container > * {
+.calendar-container>* {
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: #062639;
+}
+
+.body-container {
+    margin-top: 5vh;
 }
 
 .calendar-container {
     border-radius: 10px;
     border: 2px solid #062639;
-    margin: 0 1.5vw;
-    padding: 1vh 1vw;
+    margin: 0 1rem;
+    padding: 1rem;
     background-color: white;
 }
 
@@ -31,12 +35,6 @@
 
 .calendar-title {
     font-size: 30pt;
-    margin: 0;
-}
-
-.calendar {
-    padding: 0.5vh 0.5vw;
-    margin: 0;
 }
 
 .day-headings {
@@ -44,9 +42,59 @@
     height: 5vh;
 }
 
+#mobile-layout {
+    display: none;
+    padding: 0.5rem;
+}
+
+#desktop-layout {
+    display: block;
+}
+
+@media (max-width: 575.98px) {
+    #desktop-layout {
+        display: none;
+    }
+
+    #mobile-layout {
+        display: block;
+        min-width: 300px;
+        margin-bottom: 1.5vh;
+    }
+
+    .tasks-container {
+        min-height: 200px;
+    }
+
+    .tasks-outer {
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #desktop-layout {
+        display: none;
+    }
+
+    #mobile-layout {
+        display: block;
+    }
+}
+
+#weekly-calendar-boxes .day-head {
+    writing-mode: sideways-lr;
+    margin: 0;
+    margin-left: 0.5rem;
+    padding: 0;
+}
+
 .calendar-day {
-    height: 7vh;
+    min-height: 8vh;
     text-align: left;
+}
+
+#mobile-layout .calendar-day {
+    margin-left: 1rem;
 }
 
 .curr-month {
@@ -64,27 +112,21 @@
     background-color: #abbec9;
 }
 
-.tasks-container {
+.tasks-outer {
+    padding: 0;
+    margin: 0 1rem;
     border-radius: 10px;
     border: 2px solid #062639;
-    margin: 0 1.5vw;
-    height: 51.15vh;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-top: none;
-}
-
-.tasks-outer {
-    margin: 0 1.5vw;
+    background-color: white;
 }
 
 .tasks-title {
-    border: 2px solid #456b82;
+    border-bottom: 2px solid #456b82;
+    margin: 0;
     background-color: #e3e9ed;
-    margin: -1vh -1vw;
     padding: 1vh 1vw;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 30pt;
+    font-size: 25pt;
     color: #062639;
     border-radius: 10px;
 }
