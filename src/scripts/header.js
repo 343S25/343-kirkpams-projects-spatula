@@ -6,3 +6,8 @@ document.getElementById('tasks').onclick = () => {
 };
 
 
+document.getElementById('weather').onclick = () => {
+    window.location.href = "https://www.wunderground.com/";
+};
+
+

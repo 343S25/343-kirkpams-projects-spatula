@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Spatula</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +23,9 @@
                 <div class="col" type="button" id="tasks">Manage Tasks</div>
                 <!-- Opens a modal for user to input location -->
                 <div class="col" type="button" data-bs-toggle="modal" data-bs-target="#locationModal">Set Location</div>
+                <div class="col" type="button">About</div>
                 <!-- Div target for weather info -->
-                <div class="col" id="weather"></div>
+                <div class="col" type="button" id="weather" href="https://www.wunderground.com/"></div>
                 <img src="images/spatula.webp" alt="The word Spatula with the S shaped as a duck"
                     class="col" id="logo">
             </div>
@@ -42,7 +43,6 @@
                 </div>
                 <!-- Model Body -->
                 <div class="modal-body container">
-                    <!-- Todo: Add form for user input-->
                      <div class="row">
                          <input class="p-2 my-2" type="text" name="city" id="city" placeholder="Enter City">
                          <input class="p-2 my-2" type="text" name="locality" id="locality" placeholder="Enter your State or Country">
