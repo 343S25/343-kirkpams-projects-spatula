@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +18,7 @@
 <body>
     <header>
         <div class="container text-center ms-0 header">
+            <div class="swoosh head"></div>
             <div class="row my-3">
                 <div class="col" type="button" id="viewToggle">Toggle View</div>
                 <div class="col" type="button" id="tasks">Manage Tasks</div>
@@ -24,8 +26,10 @@
                 <div class="col" type="button" data-bs-toggle="modal" data-bs-target="#locationModal">Set Location</div>
                 <!-- Div target for weather info -->
                 <div class="col" id="weather"></div>
-                <img src="images/spatula.webp" alt="The word Spatula with the S shaped as a duck"
-                    class="col" id="logo">
+                <div class="col">
+                    <img src="images/spatula.png" alt="The word Spatula with the S shaped as a duck"
+                    id="logo">
+                </div>
             </div>
         </div>
     </header>
@@ -55,6 +59,9 @@
             </div>
         </div>
     </div>
+    <footer>
+        <div class="swoosh foot"></div>
+    </footer>
     <!-- End of Modal -->
     <script src="scripts/index.js"></script>
     <script src="scripts/weather.js"></script>
