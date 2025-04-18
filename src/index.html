@@ -42,11 +42,9 @@
                 <div class="row text-center calendar-header">
                     <button class="col calendar-button" type="button" id="calendar-button-left">←</button>
                     <div class="col col-8">
-                        <div class="row">
-                            <!-- <p class="col calendar-title" id="calendar-title">[MONTH]</p> -->
-                        </div>
                         <form class="row">
-                            <input type="month" class="calendar-title col col-10" value="1900-01" id="date-input">
+                            <input type="month" class="calendar-title col col-10 date-input" value="1900-01" id="date-input-default">
+                            <input type="date" class="calendar-title col col-10 date-input" value="1900-01-01" id="date-input-fallback">
                             <button type="submit" class="calendar-button col col-2" id="date-submit">Jump!</button>
                         </form>
                     </div>

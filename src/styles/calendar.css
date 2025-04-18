@@ -8,6 +8,7 @@
     border: 2px solid #062639;
     margin: 0 1.5vw;
     padding: 1vh 1vw;
+    background-color: white;
 }
 
 .calendar-button {
@@ -94,7 +95,7 @@
     margin: 1.5vh 0;
 }
 
-#date-input {
+.date-input {
     border-radius: 5px;
     color: #062639;
     border: none;
