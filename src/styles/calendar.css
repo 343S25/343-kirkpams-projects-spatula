@@ -1,0 +1,80 @@
+.calendar-container > * {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #062639;
+}
+
+.calendar-container {
+    border-radius: 10px;
+    border: 2px solid #062639;
+    margin: 0 1.5vw;
+    padding: 1vh 1vw;
+}
+
+.calendar-button {
+    background-color: #f9fdff;
+    border: 1px solid #708e9f;
+    border-radius: 5px;
+    padding: 0.5vh 1vw;
+    margin: 0 0.5vw;
+    font-size: 30pt;
+}
+
+.calendar-title {
+    font-size: 30pt;
+    margin: 0;
+}
+
+.calendar {
+    padding: 0.5vh 0.5vw;
+    margin: 0;
+}
+
+.day-headings {
+    padding-top: 1.5vh;
+    height: 5vh;
+}
+
+.calendar-day {
+    height: 7vh;
+    text-align: left;
+}
+
+.curr-month {
+    border: 1px solid #708e9f;
+    background-color: #f9fdff;
+}
+
+.other-month {
+    border: 1px solid #708e9f;
+    background-color: #e3e9ed;
+}
+
+.curr-day {
+    border: 1px solid #456ba2;
+    background-color: #abbec9;
+}
+
+.tasks-container {
+    border-radius: 10px;
+    border: 2px solid #062639;
+    margin: 0 1.5vw;
+    height: 60vh;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: none;
+}
+
+.tasks-outer {
+    margin: 0 1.5vw;
+}
+
+.tasks-title {
+    border: 2px solid #456ba2;
+    background-color: #e3e9ed;
+    margin: -1vh -1vw;
+    padding: 1vh 1vw;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 30pt;
+    color: #062639;
+    border-radius: 10px;
+}
