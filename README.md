@@ -29,7 +29,7 @@ This Simple Habit Tracker will take advantage of a (tbd) calendar API that enabl
 A visual representation of our project goals can be found below... 
 
 ### Desktop interface:
-![Desktop interface for A Simple Habit Tracker](src/images/desktop.png "desktop")
+![Desktop interface for A Simple Habit Tracker](src/design/desktop.png "desktop")
 
 ### Mobile Interface:
-![Mobile interface for A Simple Habit Tracker](src/images/mobile.png "mobile")
+![Mobile interface for A Simple Habit Tracker](src/design/mobile.png "mobile")
