@@ -22,16 +22,18 @@
         <div class="container text-center header">
             <div class="swoosh head"></div>
             <div class="row my-0.5">
-                <button class="col" type="button" id="viewToggle">Toggle View</button>
-                <button class="col" type="button" id="tasks">Manage Tasks</button>
+                <div class="col"><button type="button" id="viewToggle">Toggle View</button></div>
+                <div class="col"><a id="tasks" href="tasks.html">Manage Tasks</a></div>
                 <!-- Opens a modal for user to input location -->
-                <button class="col" type="button" data-bs-toggle="modal" data-bs-target="#locationModal">Set Location</button>
-                <button class="col" type="button">About</button>
+                <div class="col"><button type="button" data-bs-toggle="modal" data-bs-target="#locationModal">Set Location</button></div>
+                <div class="col"><a href="about.html">About</a></div>
                 <!-- Div target for weather info -->
-                <div class="col" id="weather"></div>
+                <div class="col">
+                    <div id="weather" type="button"></div>
+                </div>
                 <div class="col">
                     <img src="images/spatula.png" alt="The word Spatula with the S shaped as a duck"
-                    id="logo">
+                    id="logo" type="button">
                 </div>
             </div>
         </div>

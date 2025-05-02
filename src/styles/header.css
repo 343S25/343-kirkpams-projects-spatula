@@ -7,12 +7,21 @@
     aspect-ratio: 2 / 1;
 }
 
-.header button {
+.header button, a {
     background: none;
 	color: inherit;
 	border: none;
-	padding: 0;
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+    text-decoration: none;
+
+}
+
+.header div {
+    margin-top: 1vh;
+}
+
+#weather {
+    margin: 0px;
 }
