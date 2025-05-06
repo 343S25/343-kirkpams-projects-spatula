@@ -56,7 +56,7 @@ if (!localStorage.getItem("city")) {
 }
 
 // Call for updated values
-const submitBtn = document.getElementById("submit");
+const submitBtn = document.getElementById("modal-submit");
 submitBtn.addEventListener('click', () => {
     city = document.getElementById("city").value;
     locality = document.getElementById("locality").value;
@@ -82,7 +82,7 @@ const holidayNode = document.getElementById("holiday");
 // If the date and month stored is the same as todays, we've already called the API
 if (localStorage.getItem("date") + localStorage.getItem("month") == "" + date + month) {
     // If the date is in local storage, we must've already requested the holiday
-    holidayNode.innerHTML = localStorage.getItem("holiday")
+    holidayNode.innerHTML = "Today's Holiday: " + localStorage.getItem("holiday")
 } else {
     fetch(`https://holidayapi.com/v1/holidays?pretty&key=43bdb45c-7af9-4b25-b377-ffeb34989e93&country=US&year=${year}&month=${month}&day=${date}`)
         .then(response => response.json())
@@ -90,7 +90,7 @@ if (localStorage.getItem("date") + localStorage.getItem("month") == "" + date + 
             // If there's a holiday, otherwise use default text
             try {
                 localStorage.setItem("holiday", data.holidays[0].name);
-                holidayNode.innerHTML = data.holidays[0].name;
+                holidayNode.innerHTML = "Today's Holiday: " + data.holidays[0].name;
             } catch (e) {
                 let defaultHoliday = "There's no holidays, but it's a wonderful day!"
                 localStorage.setItem("holiday", defaultHoliday);

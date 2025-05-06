@@ -14,6 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <!-- Local CSS -->
     <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/tasks.css">
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/calendar.css">
 </head>
@@ -45,9 +46,11 @@
                 <template id="taskField">
                     <div class="my-2 mx-5 task-entry">
                         <label class="form-label" for="task">Task</label>
-                        <div class="input-group">
-                            <input class="form-control" type="text" id="task" name="task" placeholder="Enter new task">
-                            <button type="button" class="btn btn-outline-secondary emoji-trigger">😊</button>
+                        <div class="input-wrapper">
+                            <div class="input-group">
+                                <input class="form-control" type="text" id="task" name="task" placeholder="Enter new task">
+                                <button type="button" class="btn btn-outline-secondary emoji-trigger">😊</button>
+                            </div>
                         </div>
                     </div>
                 </template>
@@ -55,8 +58,8 @@
                 <input type="text" id="task1" value="meow" name="task1" placeholder="Enter new task">
                 -->
             </div>
-            <div id="saveDIV" class="d-inline-flex">
-                <button class="align-items-end" id="save" type="submit">Save</button>
+            <div>
+                <button class="btn mt-5 mx-5" id="save" type="submit">Save</button>
             </div>
         </form>
     </article>
@@ -79,8 +82,8 @@
                 </div>
                 <!-- Model Footer -->
                 <div class="modal-footer">
-                    <button id="submit" type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button id="modal-submit" type="button" class="btn" data-bs-dismiss="modal">Submit</button>
+                    <button id="modal-close" type="button" class="btn" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
