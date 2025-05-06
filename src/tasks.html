@@ -39,10 +39,21 @@
         </div>
     </header>
     <article>
-        <form>
+        <form id="taskForm">
             <!-- This form will eventually collect user input and save custom tasks to localStorage -->
-            <div class="form-buttons">
-                <button id="submit" type="submit">Save</button>
+            <div class="form-fields">
+                <template id="taskField">
+                    <div class="my-2 mx-5">
+                        <label for="task">Task</label>
+                        <input type="text" id="task" name="task" placeholder="Enter new task">
+                    </div>
+                </template>
+                <!-- <label for="task">Task 1</label>
+                <input type="text" id="task1" value="meow" name="task1" placeholder="Enter new task">
+                -->
+            </div>
+            <div id="saveDIV" class="d-inline-flex">
+                <button class="align-items-end" id="save" type="submit">Save</button>
             </div>
         </form>
     </article>
@@ -80,6 +91,7 @@
     <script src="scripts/header.js"></script>
     <script src="scripts/weatherHoliday.js"></script>
     <script src="scripts/calendar.js"></script>
+    <script src="scripts/tasks.js"></script>
     <!-- BootStrap JavaScript Bundle-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
