@@ -10,17 +10,15 @@ let baseDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
 
 const mobileLayout = document.getElementById("mobile-layout");
 const desktopLayout = document.getElementById("desktop-layout");
-let view = window.location.search.substring(1);
-if (view == "mobile")   {
-    desktopLayout.style.display = "none";
-    mobileLayout.style.display = "block";
-} else if (view == "desktop")   {
-    desktopLayout.style.display = "block";
-    mobileLayout.style.display = "none";
-}
+
+const taskList = document.getElementById("tasks-list");
 
 function isLeapYear(year) {
     return (year % 4 == 0) && ((year % 400 == 0) || (year % 100 != 0));
+}
+
+function createDateString(date) {
+    return
 }
 
 function buildCalendar(date) {
@@ -116,18 +114,37 @@ function buildMobileCalendar(date)  {
     }
 }
 
-const desktopCalendar = document.getElementById("desktop-layout");
-const mobileCalendar = document.getElementById("mobile-layout");
-
 function swapView() {
-    if (desktopCalendar.style.display == "none")  {
-        desktopCalendar.style.display = "block";
-        mobileCalendar.style.display = "none";
+    if (desktopLayout.style.display == "none")  {
+        desktopLayout.style.display = "block";
+        mobileLayout.style.display = "none";
         localStorage.setItem("defaultView", 0);
     } else {
-        desktopCalendar.style.display = "none";
-        mobileCalendar.style.display = "block";
+        desktopLayout.style.display = "none";
+        mobileLayout.style.display = "block";
         localStorage.setItem("defaultView", 1);
+    }
+}
+
+function populateTasksList()    {
+    if (localStorage.getItem("tasks") == null)  {
+        return
+    }
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
+    console.log(tasks)
+    let listItem;
+    for (let idx in tasks)   {
+        listItem = document.createElement("li");
+        listItem.textContent = tasks[idx].emoji + " " + tasks[idx].task;
+        console.log(currentDate.toLocaleDateString());
+        console.log(tasks[idx].completedDates[0]);
+        if (currentDate.toLocaleDateString() in tasks[idx].completedDates)  {
+            console.log("123");
+        }
+        // if (tasks[idx].completedDates.currentDate.toLocaleDateString() === "true")  {
+        //     console.log("test");
+        // }
+        taskList.appendChild(listItem);
     }
 }
 
@@ -194,10 +211,12 @@ buildCalendar(baseDate);
 buildMobileCalendar(currentDate);
 
 if (localStorage.getItem("defaultView") == 0)   {
-    desktopCalendar.style.display = "block";
-    mobileCalendar.style.display = "none";
+    desktopLayout.style.display = "block";
+    mobileLayout.style.display = "none";
 } else {
-    desktopCalendar.style.display = "none";
-    mobileCalendar.style.display = "block";
+    desktopLayout.style.display = "none";
+    mobileLayout.style.display = "block";
     localStorage.setItem("defaultView", 1);
 }
+
+populateTasksList();

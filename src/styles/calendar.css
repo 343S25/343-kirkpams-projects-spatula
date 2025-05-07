@@ -143,3 +143,12 @@
     border: none;
     text-align: center;
 }
+
+#tasks-list {
+    padding: 1vh 3vw;
+}
+
+#tasks-list li {
+    text-align: left;
+    list-style: none;
+}

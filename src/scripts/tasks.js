@@ -4,8 +4,42 @@ const taskForm = document.getElementById('taskForm');
 const formSubmit = document.getElementById('save');
 const saveDIV = document.getElementById('saveDIV');
 
+const currTasks = localStorage.getItem('tasks');
+
+function saveData(e) {
+    const formData = new FormData(taskForm, formSubmit);
+    const emojiButtons = taskForm.querySelectorAll('.emoji-trigger');
+    const tasks = [];
+    
+    let index = 0;
+    let dates;
+    for (const [key, value] of formData) {
+        if (value) {
+            dates = [];
+            if (currTasks)  {
+                let old = JSON.parse(currTasks);
+                for (let idx in old)   {
+                    if (old[idx].task == value || idx == index) {
+                        dates = old[idx].completedDates;
+                    }
+                }
+            }
+            tasks.push({
+                task: value,
+                emoji: emojiButtons[index]?.textContent.trim() || '⭐',
+                completedDates: dates
+            });
+
+        }
+        index++;
+    }
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+}
+
 // If there's at least one item previously saved
-if (localStorage.getItem('tasks')) {
+if (currTasks) {
     let tasksArray = JSON.parse(localStorage.getItem('tasks'));
     // console.log(template);
     // Build task form
@@ -15,6 +49,7 @@ if (localStorage.getItem('tasks')) {
         let label = template.querySelector('label');
         let input = template.querySelector('input');
         let emojiBtn = template.querySelector('.emoji-trigger');
+        let deleteBtn = template.querySelector('.btn-delete');
 
         label.textContent += " " + i;
         input.id += i;
@@ -34,6 +69,11 @@ if (localStorage.getItem('tasks')) {
         });
 
         emojiBtn.addEventListener('click', () => picker.togglePicker(emojiBtn));
+        deleteBtn.addEventListener('click', () => {
+            taskForm.removeChild(taskForm.children[i + 1]);
+            saveData();
+            location.reload();
+        });
 
         taskForm.appendChild(template);
     }
@@ -53,29 +93,14 @@ if (localStorage.getItem('tasks')) {
     });
 
     emojiBtn.addEventListener('click', () => picker.togglePicker(emojiBtn));
+    deleteBtn.addEventListener('click', () => {
+        taskForm.removeChild(taskForm.children[i + 1]);
+        saveData();
+        location.reload();
+    });
     
     taskForm.appendChild(template);
 }
 
 
-formSubmit.addEventListener('click', () => {
-    
-    const formData = new FormData(taskForm, formSubmit);
-    const emojiButtons = taskForm.querySelectorAll('.emoji-trigger');
-    const tasks = [];
-    
-    let index = 0;
-    for (const [key, value] of formData) {
-        if (value) {
-            tasks.push({
-                task: value,
-                emoji: emojiButtons[index]?.textContent.trim() || '⭐'
-            });
-
-        }
-        index++;
-    }
-    
-
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-})
+formSubmit.addEventListener('click', saveData);
