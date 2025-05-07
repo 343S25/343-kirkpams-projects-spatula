@@ -4,6 +4,7 @@ const taskForm = document.getElementById('taskForm');
 const formSubmit = document.getElementById('save');
 const saveDIV = document.getElementById('saveDIV');
 
+// If there's at least one item previously saved
 if (localStorage.getItem('tasks')) {
     let tasksArray = JSON.parse(localStorage.getItem('tasks'));
     // console.log(template);
@@ -17,7 +18,7 @@ if (localStorage.getItem('tasks')) {
 
         label.textContent += " " + i;
         input.id += i;
-        console.log(i - 1);
+        // console.log(i - 1);
         // console.log(tasksArray[i-1].task);
         try {
             input.value = tasksArray[i - 1].task;
@@ -36,7 +37,27 @@ if (localStorage.getItem('tasks')) {
 
         taskForm.appendChild(template);
     }
+} else {
+    const template = document.getElementById('taskField').content.cloneNode(true);
+    let label = template.querySelector('label');
+    let input = template.querySelector('input');
+    let emojiBtn = template.querySelector('.emoji-trigger');
+
+    label.textContent += " 1"
+    input.id += 1;
+    emojiBtn.textContent = '⭐'
+    const picker = new EmojiButton();
+
+    picker.on('emoji', emoji => {
+        emojiBtn.textContent = emoji.emoji;
+    });
+
+    emojiBtn.addEventListener('click', () => picker.togglePicker(emojiBtn));
+    
+    taskForm.appendChild(template);
 }
+
+
 formSubmit.addEventListener('click', () => {
     
     const formData = new FormData(taskForm, formSubmit);
