@@ -12,7 +12,6 @@ const mobileLayout = document.getElementById("mobile-layout");
 const desktopLayout = document.getElementById("desktop-layout");
 
 const taskList = document.getElementById("tasks-list");
-let taskArray = localStorage.getItem("tasks");
 
 function isLeapYear(year) {
     return (year % 4 == 0) && ((year % 400 == 0) || (year % 100 != 0));
@@ -95,7 +94,7 @@ function buildCalendar(date) {
     }
 
     // this populates the calendar with task icons
-    let tasks = JSON.parse(taskArray);
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
 
     currDate = 1;
     currWeek = 1;
@@ -178,7 +177,7 @@ function buildMobileCalendar(date) {
     }
 
     // this populates the calendar with task icons
-    let tasks = JSON.parse(taskArray);
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
     currDay = 0;
     while (currDay < 7) {
         for (let item of tasks) {
@@ -203,7 +202,7 @@ function swapView() {
 }
 
 function markTask(e) {
-    let tasks = JSON.parse(taskArray);
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
     let today = document.querySelectorAll("[date-string='" + currentDate.toLocaleDateString() + "']");
     let myContents = this.textContent.split(" ");
     myContents = [myContents[0], this.textContent.slice(myContents[0].length + 1)];
@@ -222,15 +221,14 @@ function markTask(e) {
         }
     }
 
-
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function populateTasksList() {
-    if (taskArray == null) {
+    if (localStorage.getItem("tasks") == null) {
         return
     }
-    let tasks = JSON.parse(taskArray);
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
     let listItem;
     for (let idx in tasks) {
         listItem = document.createElement("li");
