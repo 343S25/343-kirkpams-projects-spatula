@@ -91,6 +91,7 @@
 .calendar-day {
     min-height: 8vh;
     text-align: left;
+    display: flex;
 }
 
 #mobile-layout .calendar-day {
@@ -159,4 +160,9 @@
     color: #456b82;
     text-decoration: line-through;
     font-style: italic;
+}
+
+.calendar-emoji {
+    display: flex;
+    align-items: flex-end;
 }

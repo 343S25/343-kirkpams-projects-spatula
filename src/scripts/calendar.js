@@ -12,6 +12,7 @@ const mobileLayout = document.getElementById("mobile-layout");
 const desktopLayout = document.getElementById("desktop-layout");
 
 const taskList = document.getElementById("tasks-list");
+let taskArray = localStorage.getItem("tasks");
 
 function isLeapYear(year) {
     return (year % 4 == 0) && ((year % 400 == 0) || (year % 100 != 0));
@@ -28,8 +29,14 @@ function buildCalendar(date) {
     // this fills in the days before the start of the month by starting on Sunday and going until it hits the first day of the month
     while (currDay < date.getDay()) {
         let days = monthBoxes[currWeek].getElementsByClassName("calendar-day");
-        days[currDay].textContent = monthLengths[(baseMonth + 11) % 12] + (currDay - baseDay) + 1;
-        days[currDay].classList = "col calendar-day other-month";
+        days[currDay].setAttribute("date-string",
+            ((baseMonth + 11) % 12 + 1) + "/" +
+            (monthLengths[(baseMonth + 11) % 12] + (currDay - baseDay) + 1) + "/" +
+            (baseMonth == 0 ? date.getFullYear() - 1 : date.getFullYear())
+        );
+
+        days[currDay].children[0].textContent = monthLengths[(baseMonth + 11) % 12] + (currDay - baseDay) + 1;
+        days[currDay].classList = "col calendar-day other-month last-month";
         currDay++;
     }
 
@@ -39,10 +46,16 @@ function buildCalendar(date) {
 
         // inner loop handles each individual
         while (currDay < 7 && currDate <= monthLengths[baseMonth]) {
-            days[currDay].textContent = currDate;
+            days[currDay].setAttribute("date-string",
+                (baseMonth + 1) + "/" +
+                currDate + "/" +
+                date.getFullYear()
+            );
+
+            days[currDay].children[0].textContent = currDate;
             days[currDay].classList = "col calendar-day curr-month";
 
-            if (currDate == currentDate.getDate() && baseDate.getMonth() == currentDate.getMonth() && baseDate.getFullYear() == currentDate.getFullYear()) {
+            if (days[currDay].getAttribute("date-string") == currentDate.toLocaleDateString())  {
                 days[currDay].classList.add("curr-day");
             }
             currDate++;
@@ -61,8 +74,14 @@ function buildCalendar(date) {
         let days = monthBoxes[currWeek].getElementsByClassName("calendar-day");
 
         while (currDay < 7 && currWeek <= 6) {
-            days[currDay].textContent = currDate;
-            days[currDay].classList = "col calendar-day other-month";
+            days[currDay].setAttribute("date-string",
+                ((baseMonth + 13) % 12 + 1) + "/" +
+                currDate + "/" +
+                (baseMonth == 11 ? date.getFullYear() + 1 : date.getFullYear())
+            );
+
+            days[currDay].children[0].textContent = currDate;
+            days[currDay].classList = "col calendar-day other-month next-month";
             currDate++;
             currDay++;
         }
@@ -70,6 +89,28 @@ function buildCalendar(date) {
         currWeek++;
         currDay = 0;
 
+    }
+
+    let tasks = JSON.parse(taskArray);
+
+    currDate = 1;
+    currWeek = 1;
+    while (currWeek <= 6)   {
+        let days = monthBoxes[currWeek].getElementsByClassName("calendar-day");
+        while (currDay < 7 && currWeek <= 6)    {
+
+            for (let item of tasks) {
+                if (item.completedDates.includes(days[currDay].getAttribute("date-string")))    {
+                    days[currDay].children[1].textContent += item.emoji;
+                }
+            }
+
+            currDate++;
+            currDay++;
+        }
+
+        currWeek++;
+        currDay = 0;
     }
 }
 
@@ -84,7 +125,14 @@ function buildMobileCalendar(date)  {
     // this fills in any possible days before the start of the month by starting on Sunday and going until it hits the first day of the month
     while ((currDate - baseDay) < -2)   {
         weekBoxes[currDay].childNodes[3].classList = "col calendar-day other-month";
-        weekBoxes[currDay].childNodes[3].textContent = monthLengths[(baseMonth + 11) % 12] + (currDay - baseDay) + 2;
+
+        weekBoxes[currDay].childNodes[3].setAttribute("date-string",
+            ((baseMonth + 11) % 12 + 1) + "/" +
+            (monthLengths[(baseMonth + 11) % 12] + (currDay - baseDay) + 1) + "/" +
+            (baseMonth == 0 ? date.getFullYear() - 1 : date.getFullYear())
+        );
+
+        weekBoxes[currDay].childNodes[3].children[0].textContent = monthLengths[(baseMonth + 11) % 12] + (currDay - baseDay) + 1;
         currDate++;
         currDay++;
     }
@@ -92,10 +140,18 @@ function buildMobileCalendar(date)  {
     // this fills in the days of the current month
     while (currDate <= monthLengths[baseMonth] && currDay < 7) {
         weekBoxes[currDay].childNodes[3].classList = "col calendar-day curr-month";
-        weekBoxes[currDay].childNodes[3].textContent = currDate;
-        if (currDate == currentDate.getDate() && baseDate.getMonth() == currentDate.getMonth() && baseDate.getFullYear() == currentDate.getFullYear()) {
+        weekBoxes[currDay].childNodes[3].setAttribute("date-string",
+            (baseMonth + 1) + "/" +
+            currDate + "/" +
+            date.getFullYear()
+        );
+
+        weekBoxes[currDay].childNodes[3].children[0].textContent = currDate;
+
+        if (weekBoxes[currDay].childNodes[3].getAttribute("date-string") == currentDate.toLocaleDateString())  {
             weekBoxes[currDay].childNodes[3].classList.add("curr-day");
         }
+        
         currDate++;
         currDay++;
     }
@@ -104,8 +160,28 @@ function buildMobileCalendar(date)  {
     currDate = 1;
     while (currDay < 7) {
         weekBoxes[currDay].childNodes[3].classList = "col calendar-day other-month";
-        weekBoxes[currDay].childNodes[3].textContent = currDate;
+        weekBoxes[currDay].childNodes[3].setAttribute("date-string",
+            ((baseMonth + 13) % 12 + 1) + "/" +
+            currDate + "/" +
+            (baseMonth == 11 ? date.getFullYear() + 1 : date.getFullYear())
+        );
+
+        weekBoxes[currDay].childNodes[3].children[0].textContent = currDate;
         currDate++;
+        currDay++;
+    }
+
+    let tasks = JSON.parse(taskArray);
+
+    currDate = date.getDate() - baseDay;
+    currDay = 0;
+    while (currDay < 7) {
+        for (let item of tasks) {
+            if (item.completedDates.includes(weekBoxes[currDay].childNodes[3].getAttribute("date-string"))) {
+                weekBoxes[currDay].childNodes[3].children[1].textContent += item.emoji
+            }
+        }
+
         currDay++;
     }
 }
@@ -122,8 +198,9 @@ function swapView() {
     }
 }
 
-function markTaskFinished(e) {
-    let tasks = JSON.parse(localStorage.getItem("tasks"));
+function markTask(e) {
+    let tasks = JSON.parse(taskArray);
+    let today = document.querySelectorAll("[date-string='" + currentDate.toLocaleDateString() + "']");
     let myContents = this.textContent.split(" ");
     myContents = [myContents[0], this.textContent.slice(myContents[0].length + 1)];
     // TIL that some emojis are two characters long and some are three!
@@ -131,22 +208,25 @@ function markTaskFinished(e) {
         if (item.task == myContents[1] && item.emoji == myContents[0])   {
             if (this.classList.contains("finished"))    {
                 this.classList.remove("finished");
+                today.forEach((day) => day.children[1].textContent = day.children[1].textContent.replace(myContents[0], ""));
                 item.completedDates.splice(item.completedDates.indexOf(currentDate.toLocaleDateString()));
             } else {
                 this.classList.add("finished");
+                today.forEach((day) => day.children[1].textContent += item.emoji);
                 item.completedDates.push(currentDate.toLocaleDateString());
             }
         }
     }
 
+
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function populateTasksList()    {
-    if (localStorage.getItem("tasks") == null)  {
+    if (taskArray == null)  {
         return
     }
-    let tasks = JSON.parse(localStorage.getItem("tasks"));
+    let tasks = JSON.parse(taskArray);
     let listItem;
     for (let idx in tasks)   {
         listItem = document.createElement("li");
@@ -154,7 +234,7 @@ function populateTasksList()    {
         if (tasks[idx].completedDates.includes(currentDate.toLocaleDateString()))  {
             listItem.classList.add("finished");
         }
-        listItem.addEventListener('click', markTaskFinished);
+        listItem.addEventListener('click', markTask);
         taskList.appendChild(listItem);
     }
 }
