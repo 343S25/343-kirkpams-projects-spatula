@@ -116,6 +116,24 @@ function buildMobileCalendar(date)  {
     }
 }
 
+const desktopCalendar = document.getElementById("desktop-layout");
+const mobileCalendar = document.getElementById("mobile-layout");
+
+function swapView() {
+    if (desktopCalendar.style.display == "none")  {
+        desktopCalendar.style.display = "block";
+        mobileCalendar.style.display = "none";
+        localStorage.setItem("defaultView", 0);
+    } else {
+        desktopCalendar.style.display = "none";
+        mobileCalendar.style.display = "block";
+        localStorage.setItem("defaultView", 1);
+    }
+}
+
+const swapViewButton = document.getElementById("view-toggle");
+swapViewButton.addEventListener('click', swapView);
+
 const leftButton = document.getElementById("calendar-button-left");
 const rightButton = document.getElementById("calendar-button-right");
 const jumpButton = document.getElementById("date-submit");
@@ -174,3 +192,12 @@ fallbackDateSelect.value = currentDate.toISOString().substring(0, 10);
 
 buildCalendar(baseDate);
 buildMobileCalendar(currentDate);
+
+if (localStorage.getItem("defaultView") == 0)   {
+    desktopCalendar.style.display = "block";
+    mobileCalendar.style.display = "none";
+} else {
+    desktopCalendar.style.display = "none";
+    mobileCalendar.style.display = "block";
+    localStorage.setItem("defaultView", 1);
+}
