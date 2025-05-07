@@ -1,4 +1,3 @@
-
 #holiday {
     font-family: 'Playwrite DE Grund';
     width: 50%;
@@ -27,12 +26,12 @@
 .swoosh.foot {
     width: 100vw;
     background-image: url(../images/footer-background.png);
-    
+
     height: 10vh;
     margin-top: 90vh;
 
     /* this breaks at certain page heights i.e. anything other than 800, gonna fix it later */
-    
+
 }
 
 footer {

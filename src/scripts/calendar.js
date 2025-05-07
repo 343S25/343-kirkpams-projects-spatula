@@ -57,7 +57,7 @@ function buildCalendar(date) {
             days[currDay].children[1].textContent = "";
             days[currDay].classList = "col calendar-day curr-month";
 
-            if (days[currDay].getAttribute("date-string") == currentDate.toLocaleDateString())  {
+            if (days[currDay].getAttribute("date-string") == currentDate.toLocaleDateString()) {
                 days[currDay].classList.add("curr-day");
             }
             currDate++;
@@ -99,12 +99,11 @@ function buildCalendar(date) {
 
     currDate = 1;
     currWeek = 1;
-    while (currWeek <= 6)   {
+    while (currWeek <= 6) {
         let days = monthBoxes[currWeek].getElementsByClassName("calendar-day");
-        while (currDay < 7 && currWeek <= 6)    {
-
+        while (currDay < 7 && currWeek <= 6) {
             for (let item of tasks) {
-                if (item.completedDates.includes(days[currDay].getAttribute("date-string")))    {
+                if (item.completedDates.includes(days[currDay].getAttribute("date-string"))) {
                     days[currDay].children[1].textContent += item.emoji;
                 }
             }
@@ -118,7 +117,7 @@ function buildCalendar(date) {
     }
 }
 
-function buildMobileCalendar(date)  {
+function buildMobileCalendar(date) {
     let baseMonth = date.getMonth();
     let baseDay = date.getDay();
 
@@ -127,7 +126,7 @@ function buildMobileCalendar(date)  {
     let currDay = 0;
 
     // this fills in any possible days before the start of the month by starting on Sunday and going until it hits the first day of the month
-    while ((currDate - baseDay) < -2)   {
+    while ((currDate - baseDay) < -2) {
         weekBoxes[currDay].childNodes[3].classList = "col calendar-day other-month";
 
         weekBoxes[currDay].childNodes[3].setAttribute("date-string",
@@ -154,10 +153,10 @@ function buildMobileCalendar(date)  {
         weekBoxes[currDay].childNodes[3].children[0].textContent = currDate;
         weekBoxes[currDay].childNodes[3].children[1].textContent = "";
 
-        if (weekBoxes[currDay].childNodes[3].getAttribute("date-string") == currentDate.toLocaleDateString())  {
+        if (weekBoxes[currDay].childNodes[3].getAttribute("date-string") == currentDate.toLocaleDateString()) {
             weekBoxes[currDay].childNodes[3].classList.add("curr-day");
         }
-        
+
         currDate++;
         currDay++;
     }
@@ -192,7 +191,7 @@ function buildMobileCalendar(date)  {
 }
 
 function swapView() {
-    if (desktopLayout.style.display == "none")  {
+    if (desktopLayout.style.display == "none") {
         desktopLayout.style.display = "block";
         mobileLayout.style.display = "none";
         localStorage.setItem("defaultView", 0);
@@ -210,8 +209,8 @@ function markTask(e) {
     myContents = [myContents[0], this.textContent.slice(myContents[0].length + 1)];
     // TIL that some emojis are two characters long and some are three!
     for (let item of tasks) {
-        if (item.task == myContents[1] && item.emoji == myContents[0])   {
-            if (this.classList.contains("finished"))    {
+        if (item.task == myContents[1] && item.emoji == myContents[0]) {
+            if (this.classList.contains("finished")) {
                 this.classList.remove("finished");
                 today.forEach((day) => day.children[1].textContent = day.children[1].textContent.replace(myContents[0], ""));
                 item.completedDates.splice(item.completedDates.indexOf(currentDate.toLocaleDateString()));
@@ -227,16 +226,16 @@ function markTask(e) {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-function populateTasksList()    {
-    if (taskArray == null)  {
+function populateTasksList() {
+    if (taskArray == null) {
         return
     }
     let tasks = JSON.parse(taskArray);
     let listItem;
-    for (let idx in tasks)   {
+    for (let idx in tasks) {
         listItem = document.createElement("li");
         listItem.textContent = tasks[idx].emoji + " " + tasks[idx].task;
-        if (tasks[idx].completedDates.includes(currentDate.toLocaleDateString()))  {
+        if (tasks[idx].completedDates.includes(currentDate.toLocaleDateString())) {
             listItem.classList.add("finished");
         }
         listItem.addEventListener('click', markTask);
@@ -306,7 +305,7 @@ fallbackDateSelect.value = currentDate.toISOString().substring(0, 10);
 buildCalendar(baseDate);
 buildMobileCalendar(currentDate);
 
-if (localStorage.getItem("defaultView") == 0)   {
+if (localStorage.getItem("defaultView") == 0) {
     desktopLayout.style.display = "block";
     mobileLayout.style.display = "none";
 } else {

@@ -10,15 +10,15 @@ function saveData(e) {
     const formData = new FormData(taskForm, formSubmit);
     const emojiButtons = taskForm.querySelectorAll('.emoji-trigger');
     const tasks = [];
-    
+
     let index = 0;
     let dates;
     for (const [key, value] of formData) {
         if (value) {
             dates = [];
-            if (currTasks)  {
+            if (currTasks) {
                 let old = JSON.parse(currTasks);
-                for (let idx in old)   {
+                for (let idx in old) {
                     if (old[idx].task == value || idx == index) {
                         dates = old[idx].completedDates;
                     }
@@ -98,7 +98,7 @@ if (currTasks) {
         saveData();
         location.reload();
     });
-    
+
     taskForm.appendChild(template);
 }
 

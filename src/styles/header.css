@@ -7,13 +7,14 @@
     aspect-ratio: 2 / 1;
 }
 
-.header button, a {
+.header button,
+a {
     background: none;
-	color: inherit;
-	border: none;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
     text-decoration: none;
 
 }
