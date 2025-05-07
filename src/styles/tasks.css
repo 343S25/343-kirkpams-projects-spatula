@@ -19,3 +19,7 @@
         width: 30%;
     }
 }
+
+.popupContainer, .emoji-picker__wrapper {
+    z-index: 1000;
+}

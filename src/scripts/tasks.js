@@ -82,6 +82,7 @@ if (currTasks) {
     let label = template.querySelector('label');
     let input = template.querySelector('input');
     let emojiBtn = template.querySelector('.emoji-trigger');
+    let deleteBtn = template.querySelector('.btn-delete');
 
     label.textContent += " 1"
     input.id += 1;
