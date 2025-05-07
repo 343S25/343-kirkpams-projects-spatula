@@ -118,6 +118,8 @@
     border-radius: 10px;
     border: 2px solid #062639;
     background-color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #062639;
 }
 
 .tasks-title {
@@ -151,4 +153,10 @@
 #tasks-list li {
     text-align: left;
     list-style: none;
+}
+
+.finished {
+    color: #456b82;
+    text-decoration: line-through;
+    font-style: italic;
 }

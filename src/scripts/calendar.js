@@ -17,10 +17,6 @@ function isLeapYear(year) {
     return (year % 4 == 0) && ((year % 400 == 0) || (year % 100 != 0));
 }
 
-function createDateString(date) {
-    return
-}
-
 function buildCalendar(date) {
     let baseMonth = date.getMonth();
     let baseDay = date.getDay();
@@ -126,24 +122,39 @@ function swapView() {
     }
 }
 
+function markTaskFinished(e) {
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
+    let myContents = this.textContent.split(" ");
+    myContents = [myContents[0], this.textContent.slice(myContents[0].length + 1)];
+    // TIL that some emojis are two characters long and some are three!
+    for (let item of tasks) {
+        if (item.task == myContents[1] && item.emoji == myContents[0])   {
+            if (this.classList.contains("finished"))    {
+                this.classList.remove("finished");
+                item.completedDates.splice(item.completedDates.indexOf(currentDate.toLocaleDateString()));
+            } else {
+                this.classList.add("finished");
+                item.completedDates.push(currentDate.toLocaleDateString());
+            }
+        }
+    }
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
 function populateTasksList()    {
     if (localStorage.getItem("tasks") == null)  {
         return
     }
     let tasks = JSON.parse(localStorage.getItem("tasks"));
-    console.log(tasks)
     let listItem;
     for (let idx in tasks)   {
         listItem = document.createElement("li");
         listItem.textContent = tasks[idx].emoji + " " + tasks[idx].task;
-        console.log(currentDate.toLocaleDateString());
-        console.log(tasks[idx].completedDates[0]);
-        if (currentDate.toLocaleDateString() in tasks[idx].completedDates)  {
-            console.log("123");
+        if (tasks[idx].completedDates.includes(currentDate.toLocaleDateString()))  {
+            listItem.classList.add("finished");
         }
-        // if (tasks[idx].completedDates.currentDate.toLocaleDateString() === "true")  {
-        //     console.log("test");
-        // }
+        listItem.addEventListener('click', markTaskFinished);
         taskList.appendChild(listItem);
     }
 }
