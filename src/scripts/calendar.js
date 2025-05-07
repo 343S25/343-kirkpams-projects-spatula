@@ -36,6 +36,7 @@ function buildCalendar(date) {
         );
 
         days[currDay].children[0].textContent = monthLengths[(baseMonth + 11) % 12] + (currDay - baseDay) + 1;
+        days[currDay].children[1].textContent = "";
         days[currDay].classList = "col calendar-day other-month last-month";
         currDay++;
     }
@@ -53,6 +54,7 @@ function buildCalendar(date) {
             );
 
             days[currDay].children[0].textContent = currDate;
+            days[currDay].children[1].textContent = "";
             days[currDay].classList = "col calendar-day curr-month";
 
             if (days[currDay].getAttribute("date-string") == currentDate.toLocaleDateString())  {
@@ -81,6 +83,7 @@ function buildCalendar(date) {
             );
 
             days[currDay].children[0].textContent = currDate;
+            days[currDay].children[1].textContent = "";
             days[currDay].classList = "col calendar-day other-month next-month";
             currDate++;
             currDay++;
@@ -91,6 +94,7 @@ function buildCalendar(date) {
 
     }
 
+    // this populates the calendar with task icons
     let tasks = JSON.parse(taskArray);
 
     currDate = 1;
@@ -133,6 +137,7 @@ function buildMobileCalendar(date)  {
         );
 
         weekBoxes[currDay].childNodes[3].children[0].textContent = monthLengths[(baseMonth + 11) % 12] + (currDay - baseDay) + 1;
+        weekBoxes[currDay].childNodes[3].children[1].textContent = "";
         currDate++;
         currDay++;
     }
@@ -147,6 +152,7 @@ function buildMobileCalendar(date)  {
         );
 
         weekBoxes[currDay].childNodes[3].children[0].textContent = currDate;
+        weekBoxes[currDay].childNodes[3].children[1].textContent = "";
 
         if (weekBoxes[currDay].childNodes[3].getAttribute("date-string") == currentDate.toLocaleDateString())  {
             weekBoxes[currDay].childNodes[3].classList.add("curr-day");
@@ -167,13 +173,13 @@ function buildMobileCalendar(date)  {
         );
 
         weekBoxes[currDay].childNodes[3].children[0].textContent = currDate;
+        weekBoxes[currDay].childNodes[3].children[1].textContent = "";
         currDate++;
         currDay++;
     }
 
+    // this populates the calendar with task icons
     let tasks = JSON.parse(taskArray);
-
-    currDate = date.getDate() - baseDay;
     currDay = 0;
     while (currDay < 7) {
         for (let item of tasks) {
@@ -181,7 +187,6 @@ function buildMobileCalendar(date)  {
                 weekBoxes[currDay].childNodes[3].children[1].textContent += item.emoji
             }
         }
-
         currDay++;
     }
 }
