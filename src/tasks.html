@@ -44,7 +44,7 @@
             </div>
         </div>
     </header>
-    <article>
+    <article id="tasks-wrapper">
         <form id="taskForm">
             <!-- This form will eventually collect user input and save custom tasks to localStorage -->
             <div class="form-fields">
@@ -67,8 +67,19 @@
             </div>
             <div>
                 <button class="btn mt-5 mx-5" id="save" type="submit">Save</button>
+                <div id="task-list"></div>
             </div>
         </form>
+        <div>
+            <button class="mx-5 btn" id="add-btn" type="button">➕</button>
+        </div>
+        <div class="mt-2 mx-5" id="io-btns">
+            <div class="btn btn-outline-secondary import-btn">
+                <label for="import-btn">Import:</label>
+                <input type="file" id="import-btn">
+            </div>
+            <button class="btn btn-outline-secondary" type="button" id="export-btn">Export</button>
+        </div>
     </article>
     <!-- Modal for location collection -->
     <div class="modal fade" id="locationModal">

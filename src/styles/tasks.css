@@ -1,5 +1,20 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#task-list {
+    height: 60vh;
+    overflow: auto;
+}
+
 .input-wrapper {
     width: 100%;
+}
+
+footer {
+    position: fixed;
+    z-index: 2000;
+    overflow: hidden;
 }
 
 #save {
@@ -22,4 +37,16 @@
 
 .popupContainer, .emoji-picker__wrapper {
     z-index: 1000;
+}
+
+.emoji-trigger {
+    border-radius: 10px;
+}
+
+.import-btn {
+    padding: 3px;
+}
+
+input[type="file"] {
+    font-style: italic;
 }
